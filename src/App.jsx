@@ -1,5 +1,6 @@
 import { useRef } from 'react'
-import { Download, FileText, Settings, LayoutTemplate, Plus, RefreshCw } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { Download, FileText, LayoutTemplate, RefreshCw, ArrowLeft } from 'lucide-react'
 import Editor from './components/Editor'
 import Preview from './components/Preview'
 import { useInvoice } from './InvoiceContext'
@@ -59,10 +60,10 @@ function App() {
       {/* Sidebar */}
       <aside className="sidebar">
         <div className="sidebar-header">
-          <div className="logo">
+          <Link to="/" className="logo" style={{ textDecoration: 'none', color: 'inherit' }}>
             <div className="logo-icon"><FileText size={20} /></div>
             <span className="logo-text">Invoicify</span>
-          </div>
+          </Link>
         </div>
         <nav className="sidebar-nav">
           <button className="nav-item active">
@@ -73,8 +74,9 @@ function App() {
           </button>
         </nav>
         <div className="sidebar-footer">
-          <p className="text-xs text-muted">Invoicify · {new Date().getFullYear()}</p>
-          <p className="text-xs text-muted">10 templates available</p>
+          <Link to="/" className="nav-item" style={{ textDecoration: 'none' }}>
+            <ArrowLeft size={16} /><span style={{ fontSize: '0.8rem' }}>Back to Home</span>
+          </Link>
         </div>
       </aside>
 

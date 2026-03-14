@@ -15,7 +15,7 @@
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <link rel="canonical" href="https://invoicify.app/" />
 
-  <!-- ─── Open Graph (Facebook, LinkedIn, etc.) ─────────────── -->
+  <!-- ─── Open Graph ────────────────────────────────────────── -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Invoicify" />
   <meta property="og:url" content="https://invoicify.app/" />
@@ -108,23 +108,51 @@
             "@type": "Answer",
             "text": "Yes. Use the theme color picker in the Invoice Details panel to apply your brand color across the entire invoice template."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Invoicify store my invoice data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. All data remains in your browser. Nothing is uploaded to any server, so your invoice details are completely private."
+          }
         }
       ]
     }
     </script>
 
-  <!-- ─── Preconnect for performance ───────────────────────── -->
+  <!-- ─── Structured Data: BreadcrumbList ──────────────────── -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://invoicify.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Invoice Generator App",
+          "item": "https://invoicify.app/app"
+        }
+      ]
+    }
+    </script>
+
+  <!-- ─── Preconnect for Google Fonts ──────────────────────── -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 </head>
 
 <body>
-  <!-- Accessible no-script fallback -->
   <noscript>
-    <p>Invoicify – Free Invoice Generator requires JavaScript to run. Please enable JavaScript in your browser to create
-      and download professional PDF invoices.</p>
+    <p>Invoicify – Free Invoice Generator requires JavaScript. Please enable JavaScript to create and download
+      professional PDF invoices.</p>
   </noscript>
-
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
