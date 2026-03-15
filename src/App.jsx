@@ -1,10 +1,10 @@
-import { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Download, FileText, LayoutTemplate, RefreshCw, ArrowLeft, Crown } from 'lucide-react'
 import Editor from './components/Editor'
-import UpgradeModal from './components/UpgradeModal'
 import Preview from './components/Preview'
 import { useInvoice } from './InvoiceContext'
+import { setProStatus } from './utils/storage'
 import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
 import './App.css'
@@ -23,17 +23,51 @@ const TEMPLATES = [
 ]
 
 function App() {
-  const { data, updateData, isPro, usageCount, setUsageCount } = useInvoice()
+  const { data, updateData, isPro, setIsPro, usageCount, setUsageCount } = useInvoice()
   const printRef = useRef()
   const isDownloading = useRef(false)
-  const [showUpgrade, setShowUpgrade] = useState(false)
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false)
+
+  // Listen for Gumroad successful payment event
+  useEffect(() => {
+    const handlePaymentSuccess = (e) => {
+      // The Gumroad event sends details about the purchase.
+      // E.g., e.detail gives us access to email, variants, standard fields.
+      console.log("Gumroad Payment Success", e.detail);
+
+      // Give them pro status
+      setProStatus(true, 'auto-activated');
+      setIsPro(true);
+    };
+
+    window.addEventListener('gumroad-payment-success', handlePaymentSuccess);
+    return () => window.removeEventListener('gumroad-payment-success', handlePaymentSuccess);
+  }, [setIsPro]);
+
+  // Handle opening the Gumroad checkout popup
+  const triggerUpgrade = () => {
+    // If the gumroad script hasn't loaded properly for some reason, fallback to direct native URL
+    if (typeof window.GumroadOverlay === 'undefined') {
+      window.open('https://mstudiofun.gumroad.com/l/qrocz', '_blank');
+      return;
+    }
+
+    // Attempt to invoke the overlay mathematically by creating an invisible link and clicking it.
+    // This is how Gumroad's script hooks into elements.
+    const link = document.createElement('a');
+    link.href = 'https://mstudiofun.gumroad.com/l/qrocz';
+    link.dataset.gumroadSingleProduct = 'true';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
 
   const handleDownloadPdf = async () => {
     if (isDownloading.current) return
 
     // Check Freemium limits
     if (!isPro && usageCount >= 3) {
-      setShowUpgrade(true)
+      triggerUpgrade()
       return
     }
 
@@ -100,7 +134,7 @@ function App() {
                 <div className="bg-indigo-600 h-1.5 rounded-full" style={{ width: `${Math.min((usageCount / 3) * 100, 100)}%` }}></div>
               </div>
               <button
-                onClick={() => setShowUpgrade(true)}
+                onClick={triggerUpgrade}
                 className="w-full flex items-center justify-center gap-1.5 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-md transition-colors"
               >
                 <Crown size={14} /> Upgrade to Pro
@@ -129,7 +163,7 @@ function App() {
             <h2>Invoice Details</h2>
           </header>
           <div className="scroll-area" style={{ flex: 1 }}>
-            <Editor onUpgradeClick={() => setShowUpgrade(true)} />
+            <Editor onUpgradeClick={triggerUpgrade} />
           </div>
         </section>
 
@@ -180,8 +214,6 @@ function App() {
           <Preview />
         </div>
       </div>
-
-      <UpgradeModal isOpen={showUpgrade} onClose={() => setShowUpgrade(false)} />
     </div>
   )
 }
