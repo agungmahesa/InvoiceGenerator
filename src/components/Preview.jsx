@@ -25,13 +25,25 @@ const templates = {
 };
 
 const Preview = forwardRef((props, ref) => {
-    const { data } = useInvoice();
+    const { data, isPro } = useInvoice();
 
     const TemplateComponent = templates[data.template] || templates.modern;
 
     return (
-        <div className="preview-container" ref={ref}>
+        <div className="preview-container relative" ref={ref}>
             <TemplateComponent data={data} {...props} />
+
+            {/* Watermark for free users */}
+            {!isPro && (
+                <div
+                    className="absolute bottom-4 left-0 right-0 text-center pointer-events-none"
+                    style={{ opacity: 0.4 }}
+                >
+                    <p className="text-xs font-semibold text-gray-500 tracking-widest uppercase">
+                        Created with Mstudio Invoice
+                    </p>
+                </div>
+            )}
         </div>
     );
 });

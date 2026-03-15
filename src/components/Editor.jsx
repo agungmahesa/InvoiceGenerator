@@ -1,9 +1,48 @@
 import { useInvoice } from '../InvoiceContext'
-import { Plus, Trash2 } from 'lucide-react'
+import { Plus, Trash2, Crown, Save, Users } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { getSavedClients, saveClient } from '../utils/storage'
 import './Editor.css'
 
 export default function Editor() {
-    const { data, updateData, addItem, updateItem, removeItem, subtotal, taxAmount, total } = useInvoice()
+    const { data, updateData, addItem, updateItem, removeItem, subtotal, taxAmount, total, isPro } = useInvoice()
+    const [savedClients, setSavedClients] = useState([])
+
+    useEffect(() => {
+        if (isPro) setSavedClients(getSavedClients())
+    }, [isPro])
+
+    const handleLogoUpload = (e) => {
+        const file = e.target.files[0]
+        if (!file) return
+        const reader = new FileReader()
+        reader.onloadend = () => {
+            updateData('customLogo', reader.result)
+        }
+        reader.readAsDataURL(file)
+    }
+
+    const handleSaveClient = () => {
+        if (!data.clientName || !data.clientEmail) return alert('Name and Email required to save client')
+        const clients = saveClient({
+            clientName: data.clientName,
+            clientEmail: data.clientEmail,
+            clientAddress: data.clientAddress
+        })
+        setSavedClients(clients)
+        alert('Client saved!')
+    }
+
+    const loadClient = (e) => {
+        const email = e.target.value
+        if (!email) return
+        const client = savedClients.find(c => c.clientEmail === email)
+        if (client) {
+            updateData('clientName', client.clientName)
+            updateData('clientEmail', client.clientEmail)
+            updateData('clientAddress', client.clientAddress || '')
+        }
+    }
 
     const handleItemChange = (id, field, value) => {
         let finalValue = value;
@@ -15,6 +54,28 @@ export default function Editor() {
 
     return (
         <div className="editor">
+            {/* Custom Logo Upload (Pro) */}
+            <div className="form-group mb-6">
+                <div className="flex justify-between items-center mb-2">
+                    <label className="text-sm font-semibold flex items-center gap-1.5">
+                        Company Logo
+                        {!isPro && <span className="text-[10px] bg-indigo-100 text-indigo-700 px-1.5 py-0.5 rounded flex items-center gap-1"><Crown size={10} /> PRO</span>}
+                    </label>
+                </div>
+                {isPro ? (
+                    <div className="flex items-center gap-3">
+                        <input type="file" accept="image/*" onChange={handleLogoUpload} className="text-xs w-full max-w-[200px]" />
+                        {data.customLogo && (
+                            <button onClick={() => updateData('customLogo', null)} className="text-xs text-red-500 hover:text-red-700">Remove</button>
+                        )}
+                    </div>
+                ) : (
+                    <div className="p-3 bg-gray-50 border border-gray-200 border-dashed rounded-lg text-center cursor-not-allowed opacity-60">
+                        <p className="text-xs text-gray-500 flex items-center justify-center gap-1.5"><Crown size={14} /> Upgrade to upload custom logo</p>
+                    </div>
+                )}
+            </div>
+
             <div className="form-group grid-2">
                 <div className="input-field">
                     <label>Company Name</label>
@@ -43,6 +104,30 @@ export default function Editor() {
             </div>
 
             <div className="divider" />
+
+            <div className="divider" />
+
+            <div className="flex items-center justify-between mb-2">
+                <label className="text-sm font-semibold flex items-center gap-1.5">
+                    Billed To (Client)
+                </label>
+                {/* Saved Clients CRM (Pro) */}
+                {isPro ? (
+                    <div className="flex gap-2">
+                        {savedClients.length > 0 && (
+                            <select onChange={loadClient} className="text-xs border rounded p-1 w-28 bg-gray-50">
+                                <option value="">Load client...</option>
+                                {savedClients.map(c => <option key={c.clientEmail} value={c.clientEmail}>{c.clientName}</option>)}
+                            </select>
+                        )}
+                        <button onClick={handleSaveClient} className="text-xs text-indigo-600 hover:text-indigo-800 flex items-center gap-1 font-medium bg-indigo-50 px-2 py-1 rounded">
+                            <Save size={12} /> Save
+                        </button>
+                    </div>
+                ) : (
+                    <span className="text-[10px] bg-indigo-100 text-indigo-700 px-1.5 py-0.5 rounded flex items-center gap-1"><Crown size={10} /> SAVE CLIENTS</span>
+                )}
+            </div>
 
             <div className="form-group grid-2">
                 <div className="input-field">

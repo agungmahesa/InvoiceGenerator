@@ -1,4 +1,5 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
+import { getProStatus, getMonthlyUsage } from './utils/storage';
 
 const InvoiceContext = createContext();
 
@@ -21,11 +22,20 @@ const initialData = {
     notes: 'Thank you for your business! Please remit payment within 14 days.',
     template: 'modern',
     currency: 'USD',
-    themeColor: '#4f46e5'
+    themeColor: '#4f46e5',
+    customLogo: null,
 };
 
 export function InvoiceProvider({ children }) {
     const [data, setData] = useState(initialData);
+    const [isPro, setIsPro] = useState(false);
+    const [usageCount, setUsageCount] = useState(0);
+
+    useEffect(() => {
+        const status = getProStatus();
+        setIsPro(status.isPro);
+        setUsageCount(getMonthlyUsage());
+    }, []);
 
     const updateData = (field, value) => {
         setData((prev) => ({ ...prev, [field]: value }));
@@ -60,7 +70,13 @@ export function InvoiceProvider({ children }) {
     const total = subtotal + taxAmount;
 
     return (
-        <InvoiceContext.Provider value={{ data, setData, updateData, addItem, updateItem, removeItem, subtotal, taxAmount, total }}>
+        <InvoiceContext.Provider value={{
+            data, setData, updateData,
+            addItem, updateItem, removeItem,
+            subtotal, taxAmount, total,
+            isPro, setIsPro,
+            usageCount, setUsageCount
+        }}>
             {children}
         </InvoiceContext.Provider>
     );
