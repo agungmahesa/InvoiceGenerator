@@ -7,7 +7,7 @@ import { useInvoice } from '../InvoiceContext';
 // NOTE: Uses Gumroad's verify license API (CORS friendly)
 const verifyGumroadLicense = async (licenseKey) => {
     // We pass the product permalink. Update this if changing the Gumroad product.
-    const permalink = 'invoicifypro';
+    const permalink = 'pyvue';
 
     // In a real app we'd hide the product_id/permalink, but Gumroad's /verify endpoint allows frontend calls
     const res = await fetch('https://api.gumroad.com/v2/licenses/verify', {
@@ -105,7 +105,7 @@ export default function UpgradeModal({ isOpen, onClose }) {
                     {/* Gumroad CTA */}
                     <div className="pt-2">
                         <a
-                            href="https://gumroad.com/l/invoicifypro"
+                            href="https://gumroad.com/l/pyvue"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="bg-indigo-600 hover:bg-indigo-700 text-white w-full py-3 rounded-xl font-bold flex items-center justify-center transition-all shadow-md hover:shadow-lg"

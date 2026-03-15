@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { getSavedClients, saveClient } from '../utils/storage'
 import './Editor.css'
 
-export default function Editor() {
+export default function Editor({ onUpgradeClick }) {
     const { data, updateData, addItem, updateItem, removeItem, subtotal, taxAmount, total, isPro } = useInvoice()
     const [savedClients, setSavedClients] = useState([])
 
@@ -59,7 +59,14 @@ export default function Editor() {
                 <div className="flex justify-between items-center mb-2">
                     <label className="text-sm font-semibold flex items-center gap-1.5">
                         Company Logo
-                        {!isPro && <span className="text-[10px] bg-indigo-100 text-indigo-700 px-1.5 py-0.5 rounded flex items-center gap-1"><Crown size={10} /> PRO</span>}
+                        {!isPro && (
+                            <button
+                                onClick={onUpgradeClick}
+                                className="text-[10px] bg-indigo-100 hover:bg-indigo-200 text-indigo-700 px-1.5 py-0.5 rounded flex items-center gap-1 transition-colors"
+                            >
+                                <Crown size={10} /> PRO
+                            </button>
+                        )}
                     </label>
                 </div>
                 {isPro ? (
@@ -70,9 +77,14 @@ export default function Editor() {
                         )}
                     </div>
                 ) : (
-                    <div className="p-3 bg-gray-50 border border-gray-200 border-dashed rounded-lg text-center cursor-not-allowed opacity-60">
-                        <p className="text-xs text-gray-500 flex items-center justify-center gap-1.5"><Crown size={14} /> Upgrade to upload custom logo</p>
-                    </div>
+                    <button
+                        onClick={onUpgradeClick}
+                        className="w-full p-3 bg-gray-50 hover:bg-indigo-50 border border-gray-200 hover:border-indigo-300 border-dashed rounded-lg text-center transition-all opacity-80"
+                    >
+                        <p className="text-xs text-indigo-600 font-medium flex items-center justify-center gap-1.5">
+                            <Crown size={14} /> Upgrade to upload custom logo
+                        </p>
+                    </button>
                 )}
             </div>
 
@@ -125,7 +137,12 @@ export default function Editor() {
                         </button>
                     </div>
                 ) : (
-                    <span className="text-[10px] bg-indigo-100 text-indigo-700 px-1.5 py-0.5 rounded flex items-center gap-1"><Crown size={10} /> SAVE CLIENTS</span>
+                    <button
+                        onClick={onUpgradeClick}
+                        className="text-[10px] bg-indigo-100 hover:bg-indigo-200 text-indigo-700 font-semibold px-2 py-1 rounded flex items-center gap-1 transition-colors"
+                    >
+                        <Crown size={10} /> SAVE CLIENTS
+                    </button>
                 )}
             </div>
 

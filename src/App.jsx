@@ -129,7 +129,7 @@ function App() {
             <h2>Invoice Details</h2>
           </header>
           <div className="scroll-area" style={{ flex: 1 }}>
-            <Editor />
+            <Editor onUpgradeClick={() => setShowUpgrade(true)} />
           </div>
         </section>
 
