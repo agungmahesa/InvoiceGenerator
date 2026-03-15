@@ -84,6 +84,42 @@ function App() {
     document.body.removeChild(link);
   }
 
+  const handleRestore = async () => {
+    // Hidden mechanism for admin to easily force activate (for support ease)
+    // If user enters 'ADMIN-FORCE-UNLOCK' it unlocks immediately
+    const key = window.prompt("Enter your Gumroad License Key to restore Pro access:");
+    if (!key) return;
+
+    if (key === 'ADMIN-FORCE-UNLOCK') {
+      setProStatus(true, 'admin-override');
+      setIsPro(true);
+      alert("Pro access granted by Admin override.");
+      return;
+    }
+
+    try {
+      const res = await fetch('https://api.gumroad.com/v2/licenses/verify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+          product_permalink: 'qrocz',
+          license_key: key.trim()
+        })
+      });
+      const resData = await res.json();
+
+      if (resData.success && !resData.purchase.refunded) {
+        setProStatus(true, key.trim());
+        setIsPro(true);
+        alert("Pro access restored successfully!");
+      } else {
+        alert("Invalid or refunded license key.");
+      }
+    } catch (err) {
+      alert("Error verifying license. Please try again or contact support.");
+    }
+  };
+
   const handleDownloadPdf = async () => {
     if (isDownloading.current) return
 
@@ -161,13 +197,33 @@ function App() {
               >
                 <Crown size={14} /> Upgrade to Pro
               </button>
+              <div className="mt-3 text-center flex flex-col gap-1">
+                <button
+                  onClick={handleRestore}
+                  className="text-[10px] text-indigo-600 hover:text-indigo-800 underline bg-transparent border-none p-0 cursor-pointer"
+                >
+                  Already paid? Restore Purchase
+                </button>
+                <a
+                  href="mailto:agungmahesay@gmail.com?subject=Invoicify Pro Support"
+                  className="text-[10px] text-slate-500 hover:text-slate-700"
+                >
+                  Need help? Contact Support
+                </a>
+              </div>
             </div>
           ) : (
             <div className="mb-4 p-2 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg flex items-center gap-2 text-white shadow-sm">
               <div className="bg-white/20 p-1.5 rounded-md"><Crown size={16} /></div>
-              <div>
+              <div className="flex-1">
                 <p className="text-xs font-bold">Pro Activated</p>
-                <p className="text-[10px] text-indigo-100">Unlimited PDF exports</p>
+                <p className="text-[10px] text-indigo-100 mb-1">Unlimited PDF exports</p>
+                <a
+                  href="mailto:agungmahesay@gmail.com?subject=Invoicify Pro Support"
+                  className="text-[9px] text-indigo-200 hover:text-white underline"
+                >
+                  Contact Support
+                </a>
               </div>
             </div>
           )}
