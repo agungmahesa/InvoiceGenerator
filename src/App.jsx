@@ -30,22 +30,43 @@ function App() {
 
   // Listen for Gumroad successful payment event
   useEffect(() => {
+    // Gumroad triggers 'gumroad-payment-success' on the window
     const handlePaymentSuccess = (e) => {
-      // The Gumroad event sends details about the purchase.
-      // E.g., e.detail gives us access to email, variants, standard fields.
-      console.log("Gumroad Payment Success", e.detail);
-
-      // Give them pro status
+      console.log("Gumroad Payment Success Event:", e);
       setProStatus(true, 'auto-activated');
       setIsPro(true);
     };
 
+    // Fallback: listen to window postMessage 
+    // Gumroad sends postMessages from its overlay iframe to the parent window
+    const handlePostMessage = (e) => {
+      if (e.origin !== 'https://gumroad.com' && e.origin !== 'https://mstudiofun.gumroad.com') return;
+      try {
+        const data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
+        console.log("Gumroad PostMessage:", data);
+        if (data && data.post_message === 'payment_success' || data.message === 'payment_success') {
+          setProStatus(true, 'auto-activated');
+          setIsPro(true);
+        }
+      } catch (err) {
+        // Not a JSON message or unrelated message, ignore
+      }
+    };
+
     window.addEventListener('gumroad-payment-success', handlePaymentSuccess);
-    return () => window.removeEventListener('gumroad-payment-success', handlePaymentSuccess);
+    window.addEventListener('message', handlePostMessage);
+
+    return () => {
+      window.removeEventListener('gumroad-payment-success', handlePaymentSuccess);
+      window.removeEventListener('message', handlePostMessage);
+    };
   }, [setIsPro]);
 
   // Handle opening the Gumroad checkout popup
-  const triggerUpgrade = () => {
+  const triggerUpgrade = (e) => {
+    // If the event exists, prevent default routing behavior
+    if (e) e.preventDefault();
+
     // If the gumroad script hasn't loaded properly for some reason, fallback to direct native URL
     if (typeof window.GumroadOverlay === 'undefined') {
       window.open('https://mstudiofun.gumroad.com/l/qrocz', '_blank');
@@ -56,6 +77,7 @@ function App() {
     // This is how Gumroad's script hooks into elements.
     const link = document.createElement('a');
     link.href = 'https://mstudiofun.gumroad.com/l/qrocz';
+    link.className = 'gumroad-button';
     link.dataset.gumroadSingleProduct = 'true';
     document.body.appendChild(link);
     link.click();
