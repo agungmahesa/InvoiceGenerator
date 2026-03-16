@@ -1,0 +1,435 @@
+/* ═══ COMPARISON PAGE STYLES ════════════════════════════════════════════ */
+
+.comp-page {
+    background-color: #f8fafc;
+    min-height: 100vh;
+    color: #0f172a;
+    font-family: 'Inter', system-ui, sans-serif;
+    padding-bottom: 4rem;
+}
+
+/* ─── Hero Section ──────────────────────────────────────────────────── */
+.comp-hero {
+    position: relative;
+    padding: 10rem 1.5rem 6rem;
+    text-align: center;
+    background: linear-gradient(180deg, #eef2ff 0%, #f8fafc 100%);
+    overflow: hidden;
+}
+
+.comp-hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.comp-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #e0e7ff;
+    color: #4f46e5;
+    border: 1px solid #c7d2fe;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+.comp-title {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: #0f172a;
+    margin-bottom: 1.5rem;
+}
+
+.comp-title-highlight {
+    background: linear-gradient(135deg, #4f46e5, #9333ea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.comp-desc {
+    font-size: 1.25rem;
+    color: #475569;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    font-weight: 400;
+}
+
+.comp-hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.comp-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2.5rem;
+    background-color: #4f46e5;
+    color: white;
+    font-weight: 700;
+    font-size: 1.125rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: all 0.2s;
+    box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2), 0 2px 4px -1px rgba(79, 70, 229, 0.1);
+}
+
+.comp-btn-primary:hover {
+    background-color: #4338ca;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3), 0 4px 6px -2px rgba(79, 70, 229, 0.15);
+    color: white;
+}
+
+.comp-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2.5rem;
+    background-color: white;
+    color: #475569;
+    font-weight: 700;
+    font-size: 1.125rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s;
+}
+
+.comp-btn-secondary:hover {
+    background-color: #f1f5f9;
+    color: #0f172a;
+}
+
+/* ─── Comparison Section ────────────────────────────────────────────── */
+.comp-matchup {
+    padding: 6rem 1.5rem;
+    background-color: white;
+}
+
+.comp-matchup-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.comp-matchup-title {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 1rem;
+}
+
+.comp-matchup-subtitle {
+    font-size: 1.125rem;
+    color: #64748b;
+}
+
+.comp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    align-items: stretch;
+}
+
+/* Invoicify Card (Winner) */
+.comp-card-winner {
+    background-color: #f5f6ff;
+    border: 2px solid #e0e7ff;
+    border-radius: 2rem;
+    padding: 3rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s;
+}
+
+.comp-card-winner:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px -12px rgba(79, 70, 229, 0.25);
+}
+
+.comp-winner-tag {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #4f46e5;
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.75rem;
+    padding: 0.5rem 1rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-bottom-left-radius: 1rem;
+    border-top-right-radius: 1.75rem;
+    /* slightly less than card radius to fit inside */
+}
+
+.comp-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.comp-icon-box {
+    background-color: #4f46e5;
+    color: white;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.3);
+}
+
+.comp-card-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0;
+}
+
+.comp-pricing {
+    border-bottom: 1px solid #e0e7ff;
+    padding-bottom: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.comp-pricing-big {
+    font-size: 4rem;
+    font-weight: 900;
+    color: #312e81;
+    line-height: 1;
+}
+
+.comp-pricing-small {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #4f46e5;
+    margin-left: 0.5rem;
+}
+
+.comp-pricing-note {
+    font-size: 0.875rem;
+    color: #4338ca;
+    opacity: 0.8;
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
+
+.comp-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2.5rem 0;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.comp-feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.comp-check-icon {
+    color: #059669;
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+    background: #d1fae5;
+    border-radius: 50%;
+}
+
+.comp-feature-text {
+    font-size: 1rem;
+    color: #334155;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.comp-card-footer {
+    margin-top: auto;
+}
+
+.comp-btn-block {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    background-color: #4f46e5;
+    color: white;
+    font-weight: 700;
+    font-size: 1.125rem;
+    border-radius: 1rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    gap: 0.5rem;
+}
+
+.comp-btn-block:hover {
+    background-color: #4338ca;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
+    color: white;
+}
+
+/* Competitor Card (Loser) */
+.comp-card-loser {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 2rem;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.comp-card-loser .comp-card-header {
+    opacity: 0.7;
+    filter: grayscale(100%);
+}
+
+.comp-icon-box-loser {
+    background-color: #f1f5f9;
+    color: #94a3b8;
+    border: 1px solid #e2e8f0;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.comp-card-loser .comp-card-title {
+    color: #64748b;
+}
+
+.comp-card-loser .comp-pricing {
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.comp-card-loser .comp-pricing-big {
+    color: #94a3b8;
+}
+
+.comp-card-loser .comp-pricing-small {
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+.comp-card-loser .comp-pricing-note {
+    color: #94a3b8;
+}
+
+.comp-card-loser .comp-feature-item {
+    opacity: 0.75;
+}
+
+.comp-x-icon {
+    color: #f43f5e;
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+    background: #ffe4e6;
+    border-radius: 50%;
+}
+
+.comp-card-loser .comp-feature-text {
+    color: #64748b;
+}
+
+/* ─── Fast Track Banner ─────────────────────────────────────────────── */
+.comp-banner {
+    background-color: #0f172a;
+    color: white;
+    text-align: center;
+    padding: 6rem 1.5rem;
+    margin: 4rem 1.5rem 0;
+    border-radius: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.comp-banner-icon {
+    color: #fbbf24;
+    margin: 0 auto 1.5rem;
+}
+
+.comp-banner-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+}
+
+.comp-banner-desc {
+    font-size: 1.25rem;
+    color: #cbd5e1;
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.6;
+}
+
+.comp-btn-white {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2.5rem;
+    background-color: white;
+    color: #0f172a;
+    font-weight: 800;
+    font-size: 1.125rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.comp-btn-white:hover {
+    background-color: #f8fafc;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.2);
+    color: #0f172a;
+}
+
+/* ─── Responsive ────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .comp-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .comp-card-winner,
+    .comp-card-loser {
+        padding: 2rem;
+    }
+
+    .comp-pricing-big {
+        font-size: 3rem;
+    }
+
+    .comp-hero {
+        padding: 8rem 1rem 4rem;
+    }
+
+    .comp-btn-primary,
+    .comp-btn-secondary {
+        width: 100%;
+    }
+}
