@@ -70,69 +70,87 @@ export default function Comparison() {
                     </p>
 
                     <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
-                        <Link to="/app" className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-indigo-600 rounded-full hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-500/30 hover:-translate-y-0.5 transition-all w-full sm:w-auto">
-                            Start Using Invoicify Free
+                        <Link to="/app" className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-indigo-600 rounded-full hover:bg-indigo-700 hover:shadow-xl hover:-translate-y-0.5 transition-all w-full sm:w-auto">
+                            Start Using Invoicify Free <ArrowRight size={18} className="ml-2" />
                         </Link>
+                        <a href="#comparison" className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-slate-600 bg-white border border-slate-200 rounded-full hover:bg-slate-50 hover:text-slate-900 transition-all w-full sm:w-auto">
+                            See Comparison
+                        </a>
                     </div>
                 </div>
             </section>
 
             {/* Comparison Table Section */}
-            <section className="py-20 bg-white">
+            <section id="comparison" className="py-24 bg-white">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 className="text-3xl font-bold text-center mb-16">
-                        Invoicify vs {data.name} at a glance
-                    </h2>
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
+                            Invoicify vs {data.name}
+                        </h2>
+                        <p className="text-lg text-slate-500">A side-by-side look at why modern businesses choose Invoicify.</p>
+                    </div>
 
-                    <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+                    <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-stretch">
 
                         {/* Invoicify Card */}
-                        <div className="bg-indigo-50/50 rounded-3xl p-8 border border-indigo-100 shadow-sm relative overflow-hidden">
-                            <div className="absolute top-0 right-0 bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">WINNER</div>
-                            <div className="flex items-center gap-3 mb-6">
-                                <div className="bg-indigo-600 p-2 rounded-lg">
-                                    <FileText size={24} className="text-white" />
+                        <div className="bg-indigo-50/40 rounded-[2rem] p-8 sm:p-10 border border-indigo-100 shadow-sm relative overflow-hidden flex flex-col hover:shadow-md transition-shadow">
+                            <div className="absolute top-0 right-0 bg-indigo-600 text-white text-xs font-bold px-4 py-1.5 rounded-bl-xl tracking-wider uppercase">WINNER</div>
+                            <div className="flex items-center gap-4 mb-8">
+                                <div className="bg-indigo-600 p-3 rounded-xl shadow-sm text-white">
+                                    <FileText size={28} />
                                 </div>
-                                <h3 className="text-2xl font-bold text-slate-900">Invoicify</h3>
+                                <h3 className="text-3xl font-extrabold text-slate-900">Invoicify</h3>
                             </div>
 
-                            <div className="mb-8">
-                                <span className="text-4xl font-extrabold text-slate-900">{data.pricing.invoicify.split(' ')[0]}</span>
-                                <span className="text-slate-500 font-medium ml-2">{data.pricing.invoicify.substring(data.pricing.invoicify.indexOf(' '))}</span>
+                            <div className="mb-10 pb-8 border-b border-indigo-200/50">
+                                <div className="flex items-baseline mb-2">
+                                    <span className="text-5xl font-extrabold text-indigo-900">{data.pricing.invoicify.split(' ')[0]}</span>
+                                    <span className="text-indigo-600/80 font-semibold ml-2 text-lg">{data.pricing.invoicify.substring(data.pricing.invoicify.indexOf(' '))}</span>
+                                </div>
+                                <p className="text-sm text-indigo-800/60 font-medium">No hidden fees, no onboarding flow.</p>
                             </div>
 
-                            <ul className="space-y-4">
+                            <ul className="space-y-5 mb-10 flex-grow">
                                 {data.pros.map((pro, index) => (
-                                    <li key={index} className="flex items-start gap-3">
-                                        <CheckCircle2 className="text-emerald-500 shrink-0 mt-0.5" size={20} />
-                                        <span className="text-slate-700 font-medium">{pro}</span>
+                                    <li key={index} className="flex items-start gap-4">
+                                        <div className="bg-emerald-100 p-1 rounded-full shrink-0 mt-0.5">
+                                            <CheckCircle2 className="text-emerald-600" size={18} />
+                                        </div>
+                                        <span className="text-slate-700 font-medium leading-relaxed">{pro}</span>
                                     </li>
                                 ))}
                             </ul>
 
-                            <div className="mt-10">
-                                <Link to="/app" className="block w-full text-center py-3 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 transition-colors">
-                                    Create Invoice Now
+                            <div className="mt-auto pt-8">
+                                <Link to="/app" className="flex items-center justify-center w-full py-4 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 hover:shadow-lg transition-all">
+                                    Create Invoice Now <ArrowRight size={18} className="ml-2" />
                                 </Link>
                             </div>
                         </div>
 
                         {/* Competitor Card */}
-                        <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm opacity-90">
-                            <div className="flex items-center gap-3 mb-6">
-                                <h3 className="text-2xl font-bold text-slate-500">{data.name}</h3>
+                        <div className="bg-white rounded-[2rem] p-8 sm:p-10 border border-slate-200 shadow-sm opacity-90 flex flex-col relative overflow-hidden">
+                            <div className="flex items-center gap-4 mb-8 grayscale opacity-70">
+                                <div className="bg-slate-100 p-3 rounded-xl border border-slate-200 flex items-center justify-center w-[52px] h-[52px]">
+                                    <div className="font-bold text-slate-400 text-xl">{data.name.charAt(0)}</div>
+                                </div>
+                                <h3 className="text-3xl font-bold text-slate-500">{data.name}</h3>
                             </div>
 
-                            <div className="mb-8">
-                                <span className="text-4xl font-extrabold text-slate-500">{data.pricing.competitor.split(' ')[0]}</span>
-                                <span className="text-slate-400 font-medium ml-2">{data.pricing.competitor.substring(data.pricing.competitor.indexOf(' '))}</span>
+                            <div className="mb-10 pb-8 border-b border-slate-100">
+                                <div className="flex items-baseline mb-2">
+                                    <span className="text-5xl font-extrabold text-slate-400">{data.pricing.competitor.split(' ')[0]}</span>
+                                </div>
+                                <p className="text-sm text-slate-400 font-medium max-w-[80%]">{data.pricing.competitor.substring(data.pricing.competitor.indexOf(' '))}</p>
                             </div>
 
-                            <ul className="space-y-4">
+                            <ul className="space-y-5 flex-grow">
                                 {data.cons.map((con, index) => (
-                                    <li key={index} className="flex items-start gap-3 opacity-80">
-                                        <XCircle className="text-rose-400 shrink-0 mt-0.5" size={20} />
-                                        <span className="text-slate-600 font-medium">{con}</span>
+                                    <li key={index} className="flex items-start gap-4 opacity-75">
+                                        <div className="bg-rose-50 p-1 rounded-full shrink-0 mt-0.5">
+                                            <XCircle className="text-rose-400" size={18} />
+                                        </div>
+                                        <span className="text-slate-500 font-medium leading-relaxed">{con}</span>
                                     </li>
                                 ))}
                             </ul>
