@@ -256,28 +256,26 @@ export default function Landing() {
 
             {/* ──── Footer ──── */}
             <footer className="lnav-footer" role="contentinfo">
-                <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                        <div>
-                            <div className="lnav-logo mb-4">
-                                <div className="lnav-logo-icon"><FileText size={16} /></div>
-                                <span className="lnav-logo-text" style={{ fontSize: '1rem' }}>Invoicify</span>
-                            </div>
-                            <p className="footer-copy max-w-sm">Free Invoice Generator. No sign-up required, create professional PDFs instantly in your browser.</p>
+                <div className="lnav-inner" style={{ padding: '3rem 1.5rem', display: 'grid', gridTemplateColumns: 'minmax(0,1fr) minmax(0,1fr)', gap: '2rem', alignItems: 'flex-start' }}>
+                    <div>
+                        <div className="lnav-logo" style={{ marginBottom: '1rem' }}>
+                            <div className="lnav-logo-icon"><FileText size={16} /></div>
+                            <span className="lnav-logo-text" style={{ fontSize: '1rem' }}>Invoicify</span>
                         </div>
-                        <div>
-                            <h4 className="font-bold text-slate-900 mb-4">Invoicify Alternatives</h4>
-                            <ul className="flex flex-col gap-2">
-                                <li><Link to="/alternatives/quickbooks" className="text-slate-500 hover:text-indigo-600 transition-colors">Invoicify vs QuickBooks</Link></li>
-                                <li><Link to="/alternatives/freshbooks" className="text-slate-500 hover:text-indigo-600 transition-colors">Invoicify vs FreshBooks</Link></li>
-                                <li><Link to="/alternatives/wave" className="text-slate-500 hover:text-indigo-600 transition-colors">Invoicify vs Wave</Link></li>
-                                <li><Link to="/alternatives/zoho" className="text-slate-500 hover:text-indigo-600 transition-colors">Invoicify vs Zoho Invoice</Link></li>
-                            </ul>
+                        <p className="footer-copy" style={{ maxWidth: '300px' }}>Free Invoice Generator. No sign-up required, create professional PDFs instantly in your browser.</p>
+                    </div>
+                    <div>
+                        <h4 style={{ fontWeight: 700, marginBottom: '1rem', color: '#0f172a' }}>Invoicify Alternatives</h4>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                            <Link to="/alternatives/quickbooks" style={{ color: '#64748b', fontSize: '0.9rem', textDecoration: 'none' }}>Invoicify vs QuickBooks</Link>
+                            <Link to="/alternatives/freshbooks" style={{ color: '#64748b', fontSize: '0.9rem', textDecoration: 'none' }}>Invoicify vs FreshBooks</Link>
+                            <Link to="/alternatives/wave" style={{ color: '#64748b', fontSize: '0.9rem', textDecoration: 'none' }}>Invoicify vs Wave</Link>
+                            <Link to="/alternatives/zoho" style={{ color: '#64748b', fontSize: '0.9rem', textDecoration: 'none' }}>Invoicify vs Zoho Invoice</Link>
                         </div>
                     </div>
-                    <div className="pt-8 border-t border-slate-200">
-                        <p className="footer-copy text-center">© {new Date().getFullYear()} Invoicify. All rights reserved.</p>
-                    </div>
+                </div>
+                <div style={{ borderTop: '1px solid #e2e8f0', padding: '1.5rem', textAlign: 'center' }}>
+                    <p className="footer-copy">© {new Date().getFullYear()} Invoicify. All rights reserved.</p>
                 </div>
             </footer>
         </div>
