@@ -256,12 +256,28 @@ export default function Landing() {
 
             {/* ──── Footer ──── */}
             <footer className="lnav-footer" role="contentinfo">
-                <div className="lnav-inner" style={{ justifyContent: 'space-between', padding: '1.5rem' }}>
-                    <div className="lnav-logo">
-                        <div className="lnav-logo-icon"><FileText size={16} /></div>
-                        <span className="lnav-logo-text" style={{ fontSize: '1rem' }}>Invoicify</span>
+                <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        <div>
+                            <div className="lnav-logo mb-4">
+                                <div className="lnav-logo-icon"><FileText size={16} /></div>
+                                <span className="lnav-logo-text" style={{ fontSize: '1rem' }}>Invoicify</span>
+                            </div>
+                            <p className="footer-copy max-w-sm">Free Invoice Generator. No sign-up required, create professional PDFs instantly in your browser.</p>
+                        </div>
+                        <div>
+                            <h4 className="font-bold text-slate-900 mb-4">Invoicify Alternatives</h4>
+                            <ul className="flex flex-col gap-2">
+                                <li><Link to="/alternatives/quickbooks" className="text-slate-500 hover:text-indigo-600 transition-colors">Invoicify vs QuickBooks</Link></li>
+                                <li><Link to="/alternatives/freshbooks" className="text-slate-500 hover:text-indigo-600 transition-colors">Invoicify vs FreshBooks</Link></li>
+                                <li><Link to="/alternatives/wave" className="text-slate-500 hover:text-indigo-600 transition-colors">Invoicify vs Wave</Link></li>
+                                <li><Link to="/alternatives/zoho" className="text-slate-500 hover:text-indigo-600 transition-colors">Invoicify vs Zoho Invoice</Link></li>
+                            </ul>
+                        </div>
                     </div>
-                    <p className="footer-copy">© {new Date().getFullYear()} Invoicify · Free Invoice Generator · No sign-up required</p>
+                    <div className="pt-8 border-t border-slate-200">
+                        <p className="footer-copy text-center">© {new Date().getFullYear()} Invoicify. All rights reserved.</p>
+                    </div>
                 </div>
             </footer>
         </div>
