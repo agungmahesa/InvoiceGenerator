@@ -86,5 +86,93 @@ export const competitors = {
             invoicify: '$0 (Lightweight & Ad-free)',
             competitor: '$0 (Heavy & Upsell-heavy)'
         }
+    },
+    invoice2go: {
+        id: 'invoice2go',
+        name: 'Invoice2go',
+        title: 'Invoicify vs Invoice2go: The Better Free Alternative',
+        description: 'Invoice2go is mobile-first, but expensive. Invoicify is web-first, desktop-friendly, and completely free. Check the detailed comparison.',
+        heroSlogan: 'Professional invoices without the $21 monthly fee.',
+        pros: [
+            '100% Free forever. No hidden paywalls.',
+            'Desktop-optimized experience. No mobile app needed.',
+            'Full PDF control and customization.',
+            'No account requirement. Start in seconds.'
+        ],
+        cons: [
+            'Invoice2go starts at $21/month.',
+            'Heavy focus on mobile; desktop can feel limiting.',
+            'Requires account and business profile setup.'
+        ],
+        pricing: {
+            invoicify: '$0 (Unlimited)',
+            competitor: '$21 - $40 / month'
+        }
+    },
+    paypal: {
+        id: 'paypal',
+        name: 'PayPal Invoices',
+        title: 'Invoicify vs PayPal Invoices: Fast & Free',
+        description: 'PayPal is for payments, but its invoicing tool is bloated and slow. Invoicify is specialized for fast, beautiful PDF generation without even logging in.',
+        heroSlogan: 'The fastest path to a professional PDF.',
+        pros: [
+            'No login required. Generate PDFs instantly.',
+            'No transaction fees. We don\'t take a cut of your money.',
+            'Elegant, modern templates that don\'t look like standard bank forms.',
+            'Clean UI optimized for speed.'
+        ],
+        cons: [
+            'PayPal requires an active business account.',
+            'High transaction fees (3%+) if used for payments.',
+            'UI is cluttered with many banking features.'
+        ],
+        pricing: {
+            invoicify: '$0 (No Fees)',
+            competitor: 'Free (but high txn fees)'
+        }
+    },
+    invoicely: {
+        id: 'invoicely',
+        name: 'Invoicely',
+        title: 'Invoicify vs Invoicely: Why Choose Invoicify?',
+        description: 'Invoicely has a very limited free tier. Invoicify gives you 10+ premium templates and full customization for free without any branding restrictions.',
+        heroSlogan: 'Stop paying for branding removal.',
+        pros: [
+            'No branding on invoices. Professional look for free.',
+            'Unlock all features instantly without a credit card.',
+            '10 premium templates included.',
+            'Unlimited client data saved locally.'
+        ],
+        cons: [
+            'Invoicely free plan includes their branding.',
+            'Very limited features on the free tier.',
+            'Premium plans cost $9.99/month.'
+        ],
+        pricing: {
+            invoicify: '$0 (No Branding)',
+            competitor: '$9.99 / month (For no branding)'
+        }
+    },
+    invoiceninja: {
+        id: 'invoiceninja',
+        name: 'Invoice Ninja',
+        title: 'Invoicify vs Invoice Ninja: Simple vs Complex',
+        description: 'Invoice Ninja is powerful but can be overwhelming for simple needs. Invoicify offers a streamlined, no-account experience for those who just want to send a beautiful invoice in under 60 seconds.',
+        heroSlogan: 'Power without the complexity.',
+        pros: [
+            'Zero learning curve. Start typing immediately.',
+            'No hosting or setup required. Works purely in your browser.',
+            'Modern, lightweight UI built for speed.',
+            'Free forever with no watermarks on our main templates.'
+        ],
+        cons: [
+            'Invoice Ninja free plan is limited to 20 clients.',
+            'Self-hosting requires technical expertise.',
+            'The dashboard has dozens of menus that small freelancers don\'t need.'
+        ],
+        pricing: {
+            invoicify: '$0 (Unlimited Clients)',
+            competitor: '$0 (Limited to 20 clients) or $12/mo'
+        }
     }
 };

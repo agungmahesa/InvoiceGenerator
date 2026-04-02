@@ -168,6 +168,10 @@ export default function Comparison() {
                             <Link to="/alternatives/freshbooks" style={{ color: '#64748b', fontSize: '0.9rem', textDecoration: 'none' }}>Invoicify vs FreshBooks</Link>
                             <Link to="/alternatives/wave" style={{ color: '#64748b', fontSize: '0.9rem', textDecoration: 'none' }}>Invoicify vs Wave</Link>
                             <Link to="/alternatives/zoho" style={{ color: '#64748b', fontSize: '0.9rem', textDecoration: 'none' }}>Invoicify vs Zoho Invoice</Link>
+                            <Link to="/alternatives/invoice2go" style={{ color: '#64748b', fontSize: '0.9rem', textDecoration: 'none' }}>Invoicify vs Invoice2go</Link>
+                            <Link to="/alternatives/paypal" style={{ color: '#64748b', fontSize: '0.9rem', textDecoration: 'none' }}>Invoicify vs PayPal</Link>
+                            <Link to="/alternatives/invoicely" style={{ color: '#64748b', fontSize: '0.9rem', textDecoration: 'none' }}>Invoicify vs Invoicely</Link>
+                            <Link to="/alternatives/invoiceninja" style={{ color: '#64748b', fontSize: '0.9rem', textDecoration: 'none' }}>Invoicify vs Invoice Ninja</Link>
                         </div>
                     </div>
                 </div>

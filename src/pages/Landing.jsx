@@ -267,11 +267,15 @@ export default function Landing() {
                     <div>
                         <h4 style={{ fontWeight: 700, marginBottom: '1rem', color: '#0f172a' }}>Invoicify Alternatives</h4>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                            <Link to="/alternatives/quickbooks" style={{ color: '#64748b', fontSize: '0.9rem', textDecoration: 'none' }}>Invoicify vs QuickBooks</Link>
-                            <Link to="/alternatives/freshbooks" style={{ color: '#64748b', fontSize: '0.9rem', textDecoration: 'none' }}>Invoicify vs FreshBooks</Link>
-                            <Link to="/alternatives/wave" style={{ color: '#64748b', fontSize: '0.9rem', textDecoration: 'none' }}>Invoicify vs Wave</Link>
-                            <Link to="/alternatives/zoho" style={{ color: '#64748b', fontSize: '0.9rem', textDecoration: 'none' }}>Invoicify vs Zoho Invoice</Link>
-                        </div>
+                                <Link to="/alternatives/quickbooks" style={{ color: '#64748b', fontSize: '0.9rem', textDecoration: 'none' }}>Invoicify vs QuickBooks</Link>
+                                <Link to="/alternatives/freshbooks" style={{ color: '#64748b', fontSize: '0.9rem', textDecoration: 'none' }}>Invoicify vs FreshBooks</Link>
+                                <Link to="/alternatives/wave" style={{ color: '#64748b', fontSize: '0.9rem', textDecoration: 'none' }}>Invoicify vs Wave</Link>
+                                <Link to="/alternatives/zoho" style={{ color: '#64748b', fontSize: '0.9rem', textDecoration: 'none' }}>Invoicify vs Zoho Invoice</Link>
+                                <Link to="/alternatives/invoice2go" style={{ color: '#64748b', fontSize: '0.9rem', textDecoration: 'none' }}>Invoicify vs Invoice2go</Link>
+                                <Link to="/alternatives/paypal" style={{ color: '#64748b', fontSize: '0.9rem', textDecoration: 'none' }}>Invoicify vs PayPal</Link>
+                                <Link to="/alternatives/invoicely" style={{ color: '#64748b', fontSize: '0.9rem', textDecoration: 'none' }}>Invoicify vs Invoicely</Link>
+                                <Link to="/alternatives/invoiceninja" style={{ color: '#64748b', fontSize: '0.9rem', textDecoration: 'none' }}>Invoicify vs Invoice Ninja</Link>
+                            </div>
                     </div>
                 </div>
                 <div style={{ borderTop: '1px solid #e2e8f0', padding: '1.5rem', textAlign: 'center' }}>
