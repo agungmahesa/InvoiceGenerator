@@ -275,6 +275,8 @@ export default function Landing() {
                                 <Link to="/alternatives/paypal" style={{ color: '#64748b', fontSize: '0.9rem', textDecoration: 'none' }}>Invoicify vs PayPal</Link>
                                 <Link to="/alternatives/invoicely" style={{ color: '#64748b', fontSize: '0.9rem', textDecoration: 'none' }}>Invoicify vs Invoicely</Link>
                                 <Link to="/alternatives/invoiceninja" style={{ color: '#64748b', fontSize: '0.9rem', textDecoration: 'none' }}>Invoicify vs Invoice Ninja</Link>
+                                <Link to="/alternatives/invoicehome" style={{ color: '#64748b', fontSize: '0.9rem', textDecoration: 'none' }}>Invoicify vs Invoice Home</Link>
+                                <Link to="/alternatives/paperid" style={{ color: '#64748b', fontSize: '0.9rem', textDecoration: 'none' }}>Invoicify vs Paper.id</Link>
                             </div>
                     </div>
                 </div>

@@ -174,5 +174,49 @@ export const competitors = {
             invoicify: '$0 (Unlimited Clients)',
             competitor: '$0 (Limited to 20 clients) or $12/mo'
         }
+    },
+    invoicehome: {
+        id: 'invoicehome',
+        name: 'Invoice Home',
+        title: 'Invoicify vs Invoice Home: Which is the Best Free Generator?',
+        description: 'Invoice Home has a limited free tier and a dated interface. Invoicify offers a modern, completely free, and unlimited invoicing experience without any registration.',
+        heroSlogan: 'Modern design meets unlimited freedom.',
+        pros: [
+            '100% Free with no monthly limits on invoice numbers.',
+            'Modern, sleek templates designed for 2026 aesthetics.',
+            'No account required. Your privacy is protected.',
+            'Faster, one-page editing experience.'
+        ],
+        cons: [
+            'Invoice Home limited to $1,000/month on the free plan.',
+            'Interface feels dated and cluttered compared to modern apps.',
+            'Requires an account for full features.'
+        ],
+        pricing: {
+            invoicify: '$0 (Unlimited)',
+            competitor: 'Free (Up to $1,000/mo) or $9/mo'
+        }
+    },
+    paperid: {
+        id: 'paperid',
+        name: 'Paper.id',
+        title: 'Invoicify vs Paper.id: Simple Invoicing for Freelancers',
+        description: 'Paper.id is a full business platform, which can be complex. Invoicify is a focused, lightweight tool specifically for generating beautiful PDF invoices in seconds.',
+        heroSlogan: 'Ditch the platform. Just generate the PDF.',
+        pros: [
+            'No registration. Instant PDF download in Indonesia and globally.',
+            'Ultra-lightweight. No dashboard to navigate or complex settings.',
+            '10+ Professional templates available for free.',
+            'Zero transaction fees or payment processing requirements.'
+        ],
+        cons: [
+            'Paper.id requires multiple steps and registration to send an invoice.',
+            'Interface is optimized for business management, not quick generation.',
+            'Can feel bloated for freelancers who just need a simple PDF.'
+        ],
+        pricing: {
+            invoicify: '$0 (Zero Friction)',
+            competitor: 'Free (Requires ID verification) or Premium'
+        }
     }
 };
